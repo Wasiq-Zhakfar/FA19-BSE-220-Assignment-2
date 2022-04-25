@@ -1,133 +1,161 @@
 package com.masub.fa19_bse_220_assignment_2;
 
+
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnOne,btnTwo,btnThree,btnFour,btnFive,btnSix,btnSeven,btnEight,btnNine,btnZero,btnBack,btnOpen;
-    EditText input;
-    int counter=3;
-
+    Button buttonOne,buttonTwo,buttonThree,buttonFour,buttonFive,buttonSix,buttonSeven,buttonEight,buttonNine,buttonZero,buttonClean,buttonGo;
+    TextView textView;
+    int passwordCount=3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("SP20_BSE_069_Assi_02");
+        buttonOne = findViewById(R.id.buttonOne);
+        buttonTwo = findViewById(R.id.buttonTwo);
+        buttonThree = findViewById(R.id.buttonThree);
+        buttonFour = findViewById(R.id.buttonFour);
+        buttonFive = findViewById(R.id.buttonFive);
+        buttonSix = findViewById(R.id.buttonSix);
+        buttonSeven = findViewById(R.id.buttonSeven);
+        buttonEight = findViewById(R.id.buttonEight);
+        buttonNine = findViewById(R.id.buttonNine);
+        buttonClean = findViewById(R.id.buttonClean);
+        buttonZero = findViewById(R.id.buttonZero);
+        buttonGo = findViewById(R.id.buttonGo);
+        textView = findViewById(R.id.textView);
 
-        btnOne = findViewById(R.id.buttonOne);
-        btnTwo = findViewById(R.id.buttonTwo);
-        btnThree = findViewById(R.id.buttonThree);
-        btnFour = findViewById(R.id.buttonFour);
-        btnFive = findViewById(R.id.buttonFive);
-        btnSix = findViewById(R.id.buttonSix);
-        btnSeven = findViewById(R.id.buttonSeven);
-        btnEight = findViewById(R.id.buttonEight);
-        btnNine = findViewById(R.id.buttonNine);
-        btnZero = findViewById(R.id.buttonZero);
-        btnBack = findViewById(R.id.buttonBack);
-        btnOpen = findViewById(R.id.buttonOpen);
-        input = findViewById(R.id.input);
-
-        btnOpen.setOnClickListener(new View.OnClickListener() {
+        buttonOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String pass = "0000";
-                String code = input.getText().toString();
+                String txt=  textView.getText().toString();
+                String num = "1";
+                textView.setText(txt+num);
+            }
+        });
+        buttonClean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                String a = "AAA";
+//                a = a.substring(0, a.length() - 1);
+//                System.out.println(a); // result: AA
+                if(textView.length()>0){
+                    String txt=  textView.getText().toString();
 
-                if(code.equals(pass)){
-                    Intent intent = new Intent();
-                    intent.setClass(MainActivity.this,Home_Page.class);
-                    startActivity(intent);
-
+                    txt = txt.substring(0,txt.length()-1);
+                    textView.setText(txt);
+                }else
+                {
+                    Toast.makeText(MainActivity.this, "Password Field is Empty", Toast.LENGTH_SHORT).show();
                 }
-                else{
 
-                    counter--;
-                    Toast.makeText(MainActivity.this, "Invalid Input Remaining Tries "+counter, Toast.LENGTH_SHORT).show();
-                    if(counter == 0){
-                        finish();
-                    }
 
+            }
+        });
+
+        buttonGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String code = "0000";
+                String textViewCode= textView.getText().toString();
+                if(textViewCode.equals("")){
+                    Toast.makeText(MainActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+                }else if(textViewCode.equals(code)){
+                    Intent lockerHome = new Intent(MainActivity.this,Locker_Home.class);
+                    startActivity(lockerHome);
+                }
+                else if (passwordCount==0)
+                {
+                    finish();
+                }
+                else
+                {
+                    passwordCount--;
+                    Toast.makeText(MainActivity.this, "Wrong Key Remaining Times"+passwordCount, Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+        buttonZero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt =  textView.getText().toString();
+                String num = "0";
+                textView.setText(txt+num);
+            }
+        });
+        buttonTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "2";
+                textView.setText(txt+num);
+            }
+        });
+        buttonThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "3";
+                textView.setText(txt+num);
+            }
+        });
+        buttonFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "4";
+                textView.setText(txt+num);
+            }
+        });
+        buttonFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "5";
+                textView.setText(txt+num);
+            }
+        });
+        buttonSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "6";
+                textView.setText(txt+num);
+            }
+        });
+        buttonSeven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "7";
+                textView.setText(txt+num);
+            }
+        });
+        buttonEight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "8";
+                textView.setText(txt+num);
+            }
+        });
+        buttonNine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = textView.getText().toString();
+                String num = "9";
+                textView.setText(txt+num);
+            }
+        });
 
     }
-    public void one(View v){
-        btnClick(input,btnOne,"1");
-    }
-    public void two(View v){
-        btnClick(input,btnTwo,"2");
-    }
-    public void three(View v){
-        btnClick(input,btnThree,"3");
-    }
-
-    public void four(View v){
-        btnClick(input,btnFour,"4");
-    }
-
-    public void five(View v){
-        btnClick(input,btnFive,"5");
-    }
-
-    public void six(View v){
-        btnClick(input,btnSix,"6");
-    }
-
-    public void seven(View v){
-        btnClick(input,btnSeven,"7");
-    }
-
-    public void eight(View v){
-        btnClick(input,btnEight,"8");
-    }
-
-    public void nine(View v){
-        btnClick(input,btnZero,"9");
-    }
-
-    public void zero(View v){
-        btnClick(input,btnZero,"0");
-    }
-    public void back(View v){
-        Editable currentText = input.getText();
-        if(currentText.length()>0){
-            currentText.delete(currentText.length()-1,currentText.length());
-            input.setText(currentText);
-        }
-    }
-    public void open(View v){
-        String pass = "0000";
-        String code = input.getText().toString();
-
-        if(code.equals(pass)){
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this,Home_Page.class);
-            startActivity(intent);
-
-        }
-        else{
-            counter++;
-            Toast.makeText(this, counter, Toast.LENGTH_SHORT).show();
-
-        }
-    }
-
-    public void btnClick(EditText txt,Button key,String num){
-        String preText = input.getText().toString();
-        String number = num;
-
-        input.setText(preText+number);
-    }
-
-
 }

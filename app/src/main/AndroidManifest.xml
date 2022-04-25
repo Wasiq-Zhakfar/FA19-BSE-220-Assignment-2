@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FA19_BSE_220_Assignment_2">
         <activity
-            android:name=".Home_Page"
+            android:name=".Locker_Home"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
